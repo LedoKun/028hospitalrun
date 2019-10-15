@@ -12,7 +12,7 @@ COPY        root/nginx/conf.d/default_ssl.conf /etc/nginx/conf.d/default_ssl.con
 ADD         https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 
 RUN         chmod +x /tini && \
-            if [[ -n "$USE_SSL" ]] ; then rm -rf /etc/nginx/conf.d/default_ssl.conf ; else rm -rf /etc/nginx/conf.d/default.conf ; fi
+            if [ -z ${USE_SSL+x} ]; then rm -rf /etc/nginx/conf.d/default_ssl.conf; else rm -rf /etc/nginx/conf.d/default.conf; fi
 
 EXPOSE      80 443
 ENTRYPOINT  ["/tini", "--"]
