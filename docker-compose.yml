@@ -5,6 +5,8 @@ services:
     build:
       context: nginx/.
       dockerfile: Dockerfile
+      # args:
+        # USE_SSL: '1'
     image: hospitalrun_nginx
     ports:
       - "80:80"
@@ -13,6 +15,7 @@ services:
       - hospitalrun
     volumes:
       - ./data/nginx/cert:/etc/nginx/cert
+    restart: always
 
   hospitalrun:
     container_name: hospitalrun
@@ -33,6 +36,7 @@ services:
       - couchdb
       - elasticsearch
       - logstash
+    restart: always
 
   couchdb:
     container_name: couchdb_hr
@@ -41,9 +45,10 @@ services:
       - ./data/couchdb:/usr/local/var/lib/couchdb
     ports:
       - "5984:5984"
-    environment:
-      - COUCHDB_USER=couchadmin
-      - COUCHDB_PASSWORD=test
+    # environment:
+    #   - COUCHDB_USER=couchadmin
+    #   - COUCHDB_PASSWORD=test
+    restart: always
 
   elasticsearch:
     container_name: elasticsearch_hr
@@ -68,6 +73,7 @@ services:
     mem_limit: 1g
     cap_add:
       - IPC_LOCK
+    restart: always
 
   logstash:
     container_name: logstash_hr
@@ -81,3 +87,4 @@ services:
       - elasticsearch
     environment:
       - log.level=info
+    restart: always
