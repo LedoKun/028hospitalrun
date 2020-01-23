@@ -23,7 +23,7 @@
     "csv-parse": "1.1.7",
     "csv-stringify": "^1.0.4",
     "express": "^4.13.4",
-    "hospitalrun": "git://github.com/HospitalRun/hospitalrun-frontend#1.0.0-beta",
+    "hospitalrun": "git://github.com/LedoKun/028hospitalrun-frontend.git",
     "hospitalrun-dblisteners": "1.0.0-beta",
     "hospitalrun-server-routes": "1.0.0-beta",
     "moment": "^2.15.2",
