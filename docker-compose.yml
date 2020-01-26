@@ -45,9 +45,9 @@ services:
       - ./data/couchdb:/usr/local/var/lib/couchdb
     ports:
       - "5984:5984"
-    # environment:
-    #   - COUCHDB_USER=couchadmin
-    #   - COUCHDB_PASSWORD=test
+    environment:
+      - COUCHDB_USER=couchadmin
+      - COUCHDB_PASSWORD=test
     restart: always
 
   elasticsearch:
