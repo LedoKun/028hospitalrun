@@ -7,8 +7,9 @@ WORKDIR     /opt/hospitalrun
 
 COPY        /root/opt/hospitalrun/package.json /opt/hospitalrun
 
-RUN         apt update && \
-            apt install -y yarn ca-certificates && \
+RUN         apt-get update && \
+            apt-get install -y ca-certificates && \
+            rm -rf /var/lib/apt/lists/* && \
             yarn install && \
             chmod +x /tini
 
