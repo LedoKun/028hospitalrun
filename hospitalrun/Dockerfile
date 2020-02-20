@@ -7,7 +7,9 @@ WORKDIR     /opt/hospitalrun
 
 COPY        /root/opt/hospitalrun/package.json /opt/hospitalrun
 
-RUN         npm install && \
+RUN         apt update && \
+            apt install -y yarn ca-certificates && \
+            yarn install && \
             chmod +x /tini
 
 COPY        /root/opt/hospitalrun/config.js /opt/hospitalrun
