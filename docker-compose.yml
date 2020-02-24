@@ -42,7 +42,7 @@ services:
     container_name: couchdb_hr
     image: couchdb:1
     volumes:
-      - ./data/couchdb:/usr/local/var/lib/couchdb
+      - ./data/couchdb/db:/usr/local/var/lib/couchdb
       - ./data/couchdb/conf:/usr/local/etc/couchdb/local.d
     ports:
       - "5984:5984"
